@@ -1,0 +1,14 @@
+<div class="favourite-comics" ng-controller="FavouriteComicsController as favouriteComicsCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="title-view"><i class="sprite sprite-favourites"></i> <span>My favourites</span></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center comic" ng-repeat="comic in favouriteComicsCtrl.comics track by comic.id">
+            <span class="sprite sprite-btn-delete" ng-click="favouriteComicsCtrl.deleteComic(comic)"></span>
+            <img ng-src="{{comic.image}}" class="img-thumbnail" />
+            <h5>{{comic.title}}</h5>
+        </div>
+    </div>
+</div>

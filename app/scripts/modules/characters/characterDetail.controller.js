@@ -16,9 +16,12 @@
         vm.id = $stateParams.id;
         vm.isLoading = false;
 
+        vm.enableRandomButton = enableRandomButton;
         vm.getCharacterDetail = getCharacterDetail;
         vm.getComicImage = getComicImage;
         vm.getImage = getImage;
+        vm.getRandomComics = getRandomComics;
+        vm.isContainedInRadomComics = isContainedInRadomComics;
         vm.showComicDetail = showComicDetail;
         vm.viewMain = viewMain;
         vm.activate();
@@ -42,20 +45,59 @@
         }
 
         function getImage() {
-            if (vm.character) {
-                return vm.character.thumbnail.path + '/' + APP_CONSTANTS.IMAGE.SIZES.CHARACTER + '.' + vm.character.thumbnail.extension;
-
-            } else {
-                return '';
-            }
+            return CharacterService.getImage(vm.character);
         }
 
         function getComicImage(comic) {
-            if (comic) {
-                return comic.thumbnail.path + '/' + APP_CONSTANTS.IMAGE.SIZES.COMIC + '.' + comic.thumbnail.extension;
-            } else {
-                return '';
+            return ComicService.getImage(comic);
+        }
+
+        function getRandomComics() {
+            var randomComics = [],
+                item;
+
+            while (randomComics.length < 3) {
+                item = vm.comics[Math.floor(Math.random() * vm.comics.length)];
+                if (!vm.isContainedInRadomComics(randomComics, item.id) && !ComicService.isComicAddedInStore(item.id)) {
+                    randomComics.push(item);
+                }
             }
+
+            $uibModal.open({
+                templateUrl: '/views/comics/randomComics.template.html',
+                controller: 'RandomComicsController as randomComicsCtrl',
+                size: 'md',
+                resolve: {
+                    comic: function() {
+                        return randomComics;
+                    }
+                }
+            });
+        }
+
+        function enableRandomButton() {
+            var favouriteComics = ComicService.getFavouriteComics(),
+                comicsIntersection = [];
+
+            for (var i = 0; i < favouriteComics.length; i++) {
+                for (var j = 0; j < vm.comics.length; j++) {
+                    if (favouriteComics[i].id === vm.comics[j].id) {
+                        comicsIntersection.push(vm.comics[j]);
+                    }
+                }
+            }
+            return (vm.comics.length - comicsIntersection.length) >= 3;
+        }
+
+        function isContainedInRadomComics(comics, comicId) {
+            if (comics) {
+                for (var i = 0; i < comics.length; i++) {
+                    if (comics[i].id === comicId) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         function showComicDetail(comic) {

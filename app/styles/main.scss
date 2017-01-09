@@ -82,6 +82,10 @@ body {
             border-color: $backgroundColorHeader;
             .container {
                 border-color: $backgroundColorHeader;
+                img {
+                    width: 50px;
+                    padding-bottom: 15px;
+                }
             }
         }
     }
@@ -93,6 +97,7 @@ body {
             padding-right: 40px;
         }
         aside {
+            overflow: scroll;
             background-color: $backgroundColorAside;
             height: 100%;
             position: absolute;
@@ -154,6 +159,33 @@ body {
     }
 }
 
+.title-container {
+    padding-top: 20px;
+    .btn-group {
+        width: 100%;
+        button {
+            width: 100%;
+            border-color: $mainWhite;
+            height: 52px;
+            border-radius: 0;
+            font-size: 18px;
+            color: $textColor;
+            text-align: left;
+            padding: 15px;
+            line-height: 22px;
+            span {
+                float: right;
+                margin-right: 5px;
+            }
+        }
+        .dropdown-menu {
+            width: 100%;
+            color: $textColor;
+            font-size: 16px;
+        }
+    }
+}
+
 .characters {
     padding-top: 20px;
     .thumbnail {
@@ -161,19 +193,10 @@ body {
         border: 0;
         border-radius: 0;
         margin: 20px 0px;
-        .img-circle {
-            position: absolute;
-            top: -18px;
-            left: -3px;
-        }
         .character-name {
-            position: absolute;
-            top: -30px;
-            padding: 5px;
             @extend .title;
         }
         .character-description {
-            margin-top: 40px;
             color: $textColor;
             padding: 10px;
             height: 110px;
@@ -197,12 +220,21 @@ body {
     }
     .content {
         margin: 15px 0px;
+        .character-image {
+            text-align: center;
+        }
         .character-name {
             @extend .title;
         }
         .character-description {
             color: $textColor;
             @extend .text-content;
+        }
+        button {
+            background-color: $mainRed;
+            color: $mainWhite;
+            @extend .text-button;
+            border-radius: 0;
         }
     }
     .comic {
@@ -215,6 +247,8 @@ body {
                 height: 35px;
                 font-family: 'TradeGothicBold';
                 color: $titleColor;
+                width: 165px;
+                display: inline-block;
             }
         }
     }
@@ -236,6 +270,9 @@ body {
     }
     .content {
         margin: 0px 15px 15px 15px;
+        .comic-image {
+            text-align: center;
+        }
         .comic-title {
             @extend .title;
         }
@@ -257,6 +294,9 @@ body {
             padding-right: 0px;
             button {
                 background-color: $softGray;
+                &:hover {
+                    background-color: $borderGray;
+                }
                 span {
                     color: $softCoffe;
                 }
@@ -289,8 +329,73 @@ body {
     }
 }
 
+.random-comics {
+    .header-modal {
+        float: right;
+        span {
+            cursor: pointer;
+        }
+    }
+    .modal-header {
+        border-bottom: 0;
+    }
+    .content {
+        margin: 0px 15px 15px 15px;
+    }
+    .actions {
+        button {
+            width: 100%;
+            height: 70px;
+            border: 0;
+            border-radius: 0px;
+            color: $mainRed;
+            position: relative;
+            background-color: $softGray;
+            @extend .text-button;
+            i {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            span {
+                color: $softCoffe;
+                display: inline-block;
+                font-size: 16px;
+                padding-left: 10px;
+            }
+            &:hover {
+                background-color: $darkGray;
+            }
+        }
+    }
+}
+
+.favourite-comics {
+    .comic {
+        text-align: center;
+        text-align: center;
+        padding: 20px 15px;
+        h5 {
+            height: 35px;
+            font-family: 'TradeGothicBold';
+            color: $titleColor;
+            display: inline-block;
+            font-size: 16px;
+            width: 225px;
+        }
+        .sprite {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+    }
+}
+
 .search-input-container {
     .search-input {
+        width: calc(100%/2);
+        position: absolute;
+        left: calc(100%/3);
+        top: -60px;
         padding: 3px;
         border: solid 1px $backgroundColor;
         border-radius: 0;
@@ -317,33 +422,17 @@ body {
             font-size: 23px;
         }
     }
-    .btn-group {
-        width: 100%;
-        button {
-            width: 100%;
-            border-color: $mainWhite;
-            height: 52px;
-            border-radius: 0;
-            font-size: 18px;
-            color: $textColor;
-            text-align: left;
-            padding: 15px;
-            line-height: 22px;
-            span {
-                float: right;
-                margin-right: 5px;
-            }
-        }
-        .dropdown-menu {
-            width: 100%;
-            color: $textColor;
-            font-size: 16px;
-        }
-    }
 }
 
 .pagination {
     color: $textColor;
+    li {
+        >a {
+            margin: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
     .active {
         a {
             background-color: $mainWhite;
@@ -367,14 +456,14 @@ body {
     .pagination-prev {
         a {
             height: 40px;
-            line-height: 40px;
+            line-height: 35px;
             padding: 0px 20px;
         }
     }
     .pagination-next {
         a {
             height: 40px;
-            line-height: 40px;
+            line-height: 35px;
             padding: 0px 20px;
         }
     }
@@ -476,5 +565,75 @@ body {
     .container {
         width: calc(100% - 300px);
         margin-right: 300px;
+    }
+    .characters {
+        .thumbnail {
+            .img-circle {
+                position: absolute;
+                top: -18px;
+                left: -3px;
+            }
+            .character-name {
+                position: absolute;
+                top: -25px;
+            }
+            .character-description {
+                margin-top: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    aside {
+        display: none
+    }
+    .characters {
+        .thumbnail {
+            height: 430px;
+            .character-image {
+                text-align: center;
+                .img-circle {
+                    position: relative;
+                }
+            }
+            .character-name {
+                height: 50px;
+                text-align: center;
+            }
+            button {
+                width: 100%;
+            }
+        }
+    }
+    .character-detail {
+        .content {
+            .character-image {
+                text-align: center;
+            }
+            .character-name {
+                text-align: center;
+            }
+        }
+    }
+    .comic-detail {
+        .content {
+            .comic-image {
+                text-align: center;
+            }
+            .comic-title {
+                text-align: center;
+            }
+        }
+        .actions {
+            .action-container-right {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .action-container-left {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+        }
     }
 }

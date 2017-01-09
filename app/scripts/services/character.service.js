@@ -11,6 +11,7 @@
 
         var service = {
             getSingleEntity: getSingleEntity,
+            getImage: getImage,
             getEntityByNameAndOffset: getEntityByNameAndOffset
         };
 
@@ -25,6 +26,15 @@
                 apikey: APP_CONSTANTS.MARVEL_API_KEY
             };
             return getBase().one('', id).customGET('', params);
+        }
+
+        function getImage(character) {
+            if (character) {
+                return character.thumbnail.path + '/' + APP_CONSTANTS.IMAGE.SIZES.CHARACTER + '.' + character.thumbnail.extension;
+
+            } else {
+                return '';
+            }
         }
 
         function getEntityByNameAndOffset(name, page, sort) {

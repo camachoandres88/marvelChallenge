@@ -16,6 +16,9 @@
                     COMIC: 'portrait_xlarge',
                     COMIC_INCREDIBLE: 'portrait_incredible'
                 }
+            },
+            STORE: {
+                FAVOURITE_COMICS: 'store_favourite_comics'
             }
 
         });

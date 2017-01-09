@@ -1,18 +1,16 @@
-<div class="row">
-    <div class="col-md-12">
-        <h3 class="title-view"><i class="sprite sprite-characters"></i> <span>Characters</span></h3>
-    </div>
-</div>
-<div class="row search-input-container">
-    <div class="col-md-8">
-        <div class="input-group search-input">
-            <input type="text" ng-model="charactersCtrl.filterText" class="form-control input-lg" placeholder="Search" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-            <span class="input-group-btn">
+<div class="search-input-container">
+    <div class="input-group search-input">
+        <input type="text" ng-model="charactersCtrl.filterText" class="form-control input-lg" placeholder="Search" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+        <span class="input-group-btn">
               <button class="btn btn-info btn-lg" type="button">
                   <i class="glyphicon glyphicon-search"></i>
               </button>
           </span>
-        </div>
+    </div>
+</div>
+<div class="row title-container">
+    <div class="col-md-8">
+        <h3 class="title-view"><i class="sprite sprite-characters"></i> <span>Characters</span></h3>
     </div>
     <div class="col-md-4">
         <div class="btn-group" uib-dropdown>
@@ -32,10 +30,10 @@
     <div class="col-sm-12 col-md-6" ng-repeat="character in charactersCtrl.characters">
         <div class="thumbnail">
             <div class="row">
-                <div class="col-xs-5">
+                <div class="col-sm-5 character-image">
                     <img ng-src="{{charactersCtrl.getImage(character)}}" class="img-circle" />
                 </div>
-                <div class="col-xs-7">
+                <div class="col-sm-7">
                     <h4 class="character-name">{{character.name}}</h4>
                     <p ng-if="character.description.length>0" class="character-description">{{character.description | limitTo : 100}}<span ng-if="character.description.length>100">...</span></p>
                     <p ng-if="!(character.description.length>0)" class="character-description">No available description </p>
@@ -47,8 +45,8 @@
 </div>
 <div class="row">
     <div class="cols-sm-12 text-center">
-        <ul ng-if="charactersCtrl.paging.total > 10" scroll-to-top uib-pagination total-items="charactersCtrl.paging.total" ng-model="charactersCtrl.paging.current" max-size="charactersCtrl.paging.maxPagesSize" ng-change="charactersCtrl.paging.onPageChanged()"
-            class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+        <ul previous-text="<" next-text=">" ng-if="charactersCtrl.paging.total > 10" scroll-to-top uib-pagination total-items="charactersCtrl.paging.total" ng-model="charactersCtrl.paging.current" max-size="charactersCtrl.paging.maxPagesSize" ng-change="charactersCtrl.paging.onPageChanged()"
+            class="pagination-sm" boundary-links="false" rotate="false"></ul>
     </div>
 </div>
 <div class="loading-container" ng-if="charactersCtrl.isLoading">
