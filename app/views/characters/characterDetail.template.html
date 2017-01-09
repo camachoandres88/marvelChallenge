@@ -1,0 +1,34 @@
+<div class="character-detail ">
+    <div class="row back">
+        <div class="col-xs-2">
+            <button class="btn btn-default" ng-click="characterDetailCtrl.viewMain()"><span class="glyphicon glyphicon-menu-left"></span></button>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-sm-4">
+            <img ng-src="{{characterDetailCtrl.getImage()}}" class="img-circle" />
+        </div>
+        <div class="col-sm-8">
+            <h4 class="character-name">{{characterDetailCtrl.character.name}}</h4>
+            <p ng-if="characterDetailCtrl.character.description.length>0" class="character-description">{{characterDetailCtrl.character.description}}</p>
+            <p ng-if="!(characterDetailCtrl.character.description.length>0)" class="character-description">No available description </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3 class="title-view">Comics</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 text-center comic" ng-repeat="comic in characterDetailCtrl.comics">
+            <a ng-click="characterDetailCtrl.showComicDetail(comic)">
+                <h5>{{comic.title}}</h5>
+                <img ng-src="{{characterDetailCtrl.getComicImage(comic)}}" class="img-thumbnail" />
+            </a>
+        </div>
+        <div class="col-sm-12">
+            <p class="no-comic" ng-if="characterDetailCtrl.comics.length===0">No comic available</p>
+        </div>
+    </div>
+</div>
+<div class="loading-container" ng-if="characterDetailCtrl.isLoading"></div>

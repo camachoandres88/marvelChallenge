@@ -10,8 +10,6 @@
     function CharacterService(Restangular, API_CONSTANTS, APP_CONSTANTS) {
 
         var service = {
-            getBase: getBase,
-            getAllEntities: getAllEntities,
             getSingleEntity: getSingleEntity,
             getEntityByNameAndOffset: getEntityByNameAndOffset
         };
@@ -22,19 +20,19 @@
             return Restangular.all(API_CONSTANTS.CHARACTERS.BASE);
         }
 
-        function getAllEntities() {
-            return getBase().getList();
-        }
-
         function getSingleEntity(id) {
-            return getBase().get(id);
+            var params = {
+                apikey: APP_CONSTANTS.MARVEL_API_KEY
+            };
+            return getBase().one('', id).customGET('', params);
         }
 
-        function getEntityByNameAndOffset(name, page) {
+        function getEntityByNameAndOffset(name, page, sort) {
             var params = {
                 limit: APP_CONSTANTS.PAGINATOR.RECORDS_LIMIT,
                 offset: ((page - 1) * APP_CONSTANTS.PAGINATOR.RECORDS_LIMIT),
-                apikey: APP_CONSTANTS.MARVEL_API_KEY
+                apikey: APP_CONSTANTS.MARVEL_API_KEY,
+                orderBy: sort
             };
 
             if (name) {

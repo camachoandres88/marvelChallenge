@@ -14,11 +14,13 @@
             'ui.router',
             'ngAnimate',
             'ngAria',
+            'ngSanitize',
             'restangular',
             'angular-storage',
             'ui.bootstrap',
             'pascalprecht.translate',
             'marvelChallengeApp.modules',
-            'marvelChallengeApp.services'
+            'marvelChallengeApp.services',
+            'marvelChallengeApp.directives'
         ]);
 })();

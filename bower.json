@@ -1,30 +1,31 @@
 {
-  "name": "marvel-challenge",
-  "version": "0.0.0",
-  "dependencies": {
-    "angular": "1.5.10",
-    "bootstrap-sass-official": "^3.2.0",
-    "angular-ui-router": "^0.3.2",
-    "angular-translate": "^2.13.1",
-    "restangular": "^1.6.1",
-    "a0-angular-storage": "^0.0.15",
-    "angular-animate": "1.5.10",
-    "angular-aria": "1.5.10",
-    "bootstrap": "^3.3.7",
-    "angular-bootstrap": "^2.4.0"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.4.0"
-  },
-  "appPath": "app",
-  "moduleName": "marvelChallengeApp",
-  "overrides": {
-    "bootstrap": {
-      "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
-      ]
+    "name": "marvel-challenge",
+    "version": "0.0.0",
+    "dependencies": {
+        "angular": "1.5.10",
+        "bootstrap-sass-official": "^3.2.0",
+        "angular-ui-router": "^0.3.2",
+        "angular-translate": "^2.13.1",
+        "restangular": "^1.6.1",
+        "a0-angular-storage": "^0.0.15",
+        "angular-animate": "1.5.10",
+        "angular-aria": "1.5.10",
+        "bootstrap": "^3.3.7",
+        "angular-bootstrap": "^2.4.0",
+        "angular-sanitize": "1.5.10"
+    },
+    "devDependencies": {
+        "angular-mocks": "^1.4.0"
+    },
+    "appPath": "app",
+    "moduleName": "marvelChallengeApp",
+    "overrides": {
+        "bootstrap": {
+            "main": [
+                "less/bootstrap.less",
+                "dist/css/bootstrap.css",
+                "dist/js/bootstrap.js"
+            ]
+        }
     }
-  }
 }

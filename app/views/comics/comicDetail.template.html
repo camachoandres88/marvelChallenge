@@ -1,0 +1,32 @@
+<div class="comic-detail">
+    <div class="modal-header">
+        <div class="row header-modal">
+            <div class="col-xs-12">
+                <span class="sprite sprite-btn-close" ng-click="comicDetailCtrl.close()"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-sm-5">
+            <img ng-src="{{comicDetailCtrl.getImage()}}" class="img-thumbnail" />
+        </div>
+        <div class="col-sm-7">
+            <h4 class="comic-title">{{comicDetailCtrl.comic.title}}</h4>
+            <p ng-if="comicDetailCtrl.comic.description.length>0" class="comic-description" ng-bind-html="comicDetailCtrl.sanitizeDescription(comicDetailCtrl.comic.description)"></p>
+            <p ng-if="!(comicDetailCtrl.comic.description.length>0)" class="comic-description">No available description </p>
+        </div>
+    </div>
+    <div class="row actions">
+        <div class="col-sm-6 action-container-left">
+            <button class="btn btn-default" ng-class="comicDetailCtrl.added ? 'added':''">
+              <i ng-if="comicDetailCtrl.added" class="sprite sprite-favourites"></i><span  ng-if="comicDetailCtrl.added">Added To Favourites</span>
+              <i ng-if="!comicDetailCtrl.added"  class="sprite sprite-btn-favourites-default"></i><span ng-if="!comicDetailCtrl.added">Add To Favourites</span>
+            </button>
+        </div>
+        <div class="col-sm-6 action-container-right">
+            <button class="btn btn-default">
+              <i class="sprite sprite-shopping-cart-primary"></i><span>Buy For ${{comicDetailCtrl.comic.prices[0] ? comicDetailCtrl.comic.prices[0].price : 0}}</span>
+            </button>
+        </div>
+    </div>
+</div>

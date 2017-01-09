@@ -24,25 +24,31 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-        <div class="navbar navbar-default" role="navigation">
+    <header class="header">
+        <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#/">marvelChallenge</a>
                 </div>
             </div>
-        </div>
+        </nav>
+    </header>
+
+    <div class="body-content">
+        <section class="container" ng-cloak>
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-view="" ng-cloak></div>
+                </div>
+            </div>
+        </section>
+        <aside class="favorites-list">
+            <div ng-include="'views/main/favourites.template.html'"></div>
+        </aside>
     </div>
 
-    <div class="container">
-        <div ui-view=""></div>
-    </div>
-
-    <div class="footer">
-        <div class="container">
-            <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-        </div>
-    </div>
+    <footer>
+    </footer>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -58,6 +64,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -76,6 +83,9 @@
     <script src="scripts/services/character.service.js"></script>
     <script src="scripts/services/comic.service.js"></script>
     <script src="scripts/services/paginator.service.js"></script>
+
+    <script src="scripts/directives/directives.module.js"></script>
+    <script src="scripts/directives/scrollToTop.directive.js"></script>
 
     <script src="scripts/app.js"></script>
     <script src="scripts/config/api.constant.js"></script>

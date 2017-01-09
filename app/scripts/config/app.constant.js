@@ -9,6 +9,13 @@
             PAGINATOR: {
                 STEPS: 6,
                 RECORDS_LIMIT: 10
+            },
+            IMAGE: {
+                SIZES: {
+                    CHARACTER: 'standard_xlarge',
+                    COMIC: 'portrait_xlarge',
+                    COMIC_INCREDIBLE: 'portrait_incredible'
+                }
             }
 
         });
