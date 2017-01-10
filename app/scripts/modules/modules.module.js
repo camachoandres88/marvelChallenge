@@ -4,8 +4,6 @@
     angular
         .module('marvelChallengeApp.modules', [
             'marvelChallengeApp.modules.characters',
-            'marvelChallengeApp.modules.comics',
-            'marvelChallengeApp.modules.main'
-
+            'marvelChallengeApp.modules.comics'
         ]);
 })();

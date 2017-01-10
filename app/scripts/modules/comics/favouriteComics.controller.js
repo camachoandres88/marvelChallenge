@@ -8,7 +8,7 @@
     FavouriteComicsController.$inject = ['ComicService'];
 
     function FavouriteComicsController(ComicService) {
-        var vm = this;
+        let vm = this;
         vm.comics = ComicService.getFavouriteComics();
         vm.deleteComic = deleteComic;
 

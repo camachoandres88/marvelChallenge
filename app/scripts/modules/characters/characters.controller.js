@@ -8,7 +8,7 @@
     CharactersController.$inject = ['CharacterService', 'APP_CONSTANTS', '$scope', '$state'];
 
     function CharactersController(CharacterService, APP_CONSTANTS, $scope, $state) {
-        var vm = this;
+        let vm = this;
 
         vm.characters = [];
         vm.filterText = '';
@@ -26,7 +26,6 @@
         vm.getImage = getImage;
         vm.sort = sort;
         vm.viewDetail = viewDetail;
-
 
         vm.activate();
 

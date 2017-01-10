@@ -8,14 +8,14 @@
     RandomComicsController.$inject = ['$uibModalInstance', 'comic', 'ComicService'];
 
     function RandomComicsController($uibModalInstance, comic, ComicService) {
-        var vm = this;
+        let vm = this;
         vm.comics = comic;
         vm.addComicsToFavourites = addComicsToFavourites;
         vm.getComicImage = getComicImage;
         vm.close = close;
 
         function addComicsToFavourites() {
-            for (var i = 0; i < vm.comics.length; i++) {
+            for (let i = 0; i < vm.comics.length; i++) {
                 ComicService.addFavouriteComic(vm.comics[i]);
             }
             vm.close();

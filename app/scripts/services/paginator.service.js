@@ -9,7 +9,7 @@
 
     function PaginatorService() {
 
-        var actualPage = 0,
+        let actualPage = 0,
             service = {
                 getActualPage: getActualPage,
                 setActualPage: setActualPage

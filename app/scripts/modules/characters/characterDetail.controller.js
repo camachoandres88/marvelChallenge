@@ -8,7 +8,7 @@
     CharacterDetailController.$inject = ['CharacterService', 'ComicService', 'APP_CONSTANTS', '$scope', '$stateParams', '$q', '$state', '$uibModal'];
 
     function CharacterDetailController(CharacterService, ComicService, APP_CONSTANTS, $scope, $stateParams, $q, $state, $uibModal) {
-        var vm = this;
+        let vm = this;
 
         vm.activate = activate;
         vm.character = null;
@@ -21,7 +21,6 @@
         vm.getComicImage = getComicImage;
         vm.getImage = getImage;
         vm.getRandomComics = getRandomComics;
-        vm.isContainedInRadomComics = isContainedInRadomComics;
         vm.showComicDetail = showComicDetail;
         vm.viewMain = viewMain;
         vm.activate();
@@ -31,7 +30,7 @@
         }
 
         function getCharacterDetail() {
-            var promises = [];
+            let promises = [];
             vm.isLoading = true;
             promises.push(CharacterService.getSingleEntity(vm.id));
             promises.push(ComicService.getEntitiesByCharacter(vm.id));
@@ -53,15 +52,7 @@
         }
 
         function getRandomComics() {
-            var randomComics = [],
-                item;
-
-            while (randomComics.length < 3) {
-                item = vm.comics[Math.floor(Math.random() * vm.comics.length)];
-                if (!vm.isContainedInRadomComics(randomComics, item.id) && !ComicService.isComicAddedInStore(item.id)) {
-                    randomComics.push(item);
-                }
-            }
+            let randomComics = ComicService.getRandomComics(vm.comics);
 
             $uibModal.open({
                 templateUrl: '/views/comics/randomComics.template.html',
@@ -76,32 +67,7 @@
         }
 
         function enableRandomButton() {
-            var favouriteComics = ComicService.getFavouriteComics(),
-                comicsIntersection = [];
-
-            if (favouriteComics) {
-                for (var i = 0; i < favouriteComics.length; i++) {
-                    for (var j = 0; j < vm.comics.length; j++) {
-                        if (favouriteComics[i].id === vm.comics[j].id) {
-                            comicsIntersection.push(vm.comics[j]);
-                        }
-                    }
-                }
-                return (vm.comics.length - comicsIntersection.length) >= 3;
-            } else {
-                return false;
-            }
-        }
-
-        function isContainedInRadomComics(comics, comicId) {
-            if (comics) {
-                for (var i = 0; i < comics.length; i++) {
-                    if (comics[i].id === comicId) {
-                        return true;
-                    }
-                }
-            }
-            return false;
+            return ComicService.enableRandomFunctionality(vm.comics);
         }
 
         function showComicDetail(comic) {

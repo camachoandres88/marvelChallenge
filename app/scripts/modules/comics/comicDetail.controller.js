@@ -8,7 +8,7 @@
     ComicDetailController.$inject = ['$uibModalInstance', 'comic', 'ComicService', 'APP_CONSTANTS', '$sce'];
 
     function ComicDetailController($uibModalInstance, comic, ComicService, APP_CONSTANTS, $sce) {
-        var vm = this;
+        let vm = this;
 
         vm.comic = comic;
         vm.close = close;

@@ -9,7 +9,7 @@
 
     function CharacterService(Restangular, API_CONSTANTS, APP_CONSTANTS) {
 
-        var service = {
+        let service = {
             getSingleEntity: getSingleEntity,
             getImage: getImage,
             getEntityByNameAndOffset: getEntityByNameAndOffset
@@ -22,7 +22,7 @@
         }
 
         function getSingleEntity(id) {
-            var params = {
+            let params = {
                 apikey: APP_CONSTANTS.MARVEL_API_KEY
             };
             return getBase().one('', id).customGET('', params);
@@ -38,7 +38,7 @@
         }
 
         function getEntityByNameAndOffset(name, page, sort) {
-            var params = {
+            let params = {
                 limit: APP_CONSTANTS.PAGINATOR.RECORDS_LIMIT,
                 offset: ((page - 1) * APP_CONSTANTS.PAGINATOR.RECORDS_LIMIT),
                 apikey: APP_CONSTANTS.MARVEL_API_KEY,
