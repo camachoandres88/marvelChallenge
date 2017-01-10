@@ -7,7 +7,6 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -23,17 +22,22 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
     <header class="header">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <img src="/images/marvel-logo.png" />
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#favorites-list-toogle">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
                 </div>
             </div>
         </nav>
     </header>
-
     <div class="body-content">
         <section class="container" ng-cloak>
             <div class="row">
@@ -42,7 +46,10 @@
                 </div>
             </div>
         </section>
-        <aside class="favorites-list">
+        <aside id="favorites-list-aside" class="favorites-list">
+            <div ng-include="'views/main/favouriteComics.template.html'"></div>
+        </aside>
+        <aside id="favorites-list-toogle" class="favorites-list collapse width">
             <div ng-include="'views/main/favouriteComics.template.html'"></div>
         </aside>
     </div>

@@ -82,10 +82,6 @@ body {
             border-color: $backgroundColorHeader;
             .container {
                 border-color: $backgroundColorHeader;
-                img {
-                    width: 50px;
-                    padding-bottom: 15px;
-                }
             }
         }
     }
@@ -103,7 +99,6 @@ body {
             position: absolute;
             right: 0px;
             top: 0px;
-            padding: 0px 15px;
         }
     }
     .footer {
@@ -341,6 +336,9 @@ body {
     }
     .content {
         margin: 0px 15px 15px 15px;
+        .comic-image {
+            text-align: center;
+        }
     }
     .actions {
         button {
@@ -370,6 +368,8 @@ body {
 }
 
 .favourite-comics {
+    width: 270px;
+    padding: 0px 15px;
     .comic {
         text-align: center;
         text-align: center;
@@ -544,6 +544,24 @@ body {
     background-position: -5px -105px;
 }
 
+.collapse.width {
+    height: auto;
+}
+
+.collapse {
+    width: 0px;
+}
+
+.collapse.in {
+    width: 270px;
+}
+
+.navbar-toggle {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+}
+
 
 /* Responsive: Portrait tablets and up */
 
@@ -554,6 +572,14 @@ body {
     .footer {
         padding-left: 0;
         padding-right: 0;
+    }
+    .navbar {
+        .container {
+            img {
+                width: 140px;
+                padding: 5px;
+            }
+        }
     }
     /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
@@ -582,11 +608,23 @@ body {
             }
         }
     }
+    aside {
+        height: 100%;
+        display: block;
+    }
 }
 
 @media screen and (max-width: 768px) {
-    aside {
-        display: none
+    .navbar {
+        .container {
+            img {
+                width: 106px;
+                padding: 18px;
+            }
+        }
+    }
+    #favorites-list-aside {
+        display: none;
     }
     .characters {
         .thumbnail {
