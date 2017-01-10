@@ -9,7 +9,7 @@
 
     function ComicService(Restangular, API_CONSTANTS, APP_CONSTANTS, store) {
 
-        var comics = getFavouriteComics(),
+        var comics = store.get(APP_CONSTANTS.STORE.FAVOURITE_COMICS) || [],
             service = {
                 getSingleEntity: getSingleEntity,
                 getImage: getImage,
@@ -67,7 +67,7 @@
         }
 
         function getFavouriteComics() {
-            return store.get(APP_CONSTANTS.STORE.FAVOURITE_COMICS);
+            return comics;
         }
 
         function getImage(comic) {

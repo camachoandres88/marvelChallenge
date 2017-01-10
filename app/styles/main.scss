@@ -99,6 +99,7 @@ body {
             position: absolute;
             right: 0px;
             top: 0px;
+            z-index: 1000;
         }
     }
     .footer {
@@ -368,7 +369,7 @@ body {
 }
 
 .favourite-comics {
-    width: 270px;
+    width: 300px;
     padding: 0px 15px;
     .comic {
         text-align: center;
@@ -544,16 +545,12 @@ body {
     background-position: -5px -105px;
 }
 
-.collapse.width {
-    height: auto;
-}
-
 .collapse {
     width: 0px;
 }
 
 .collapse.in {
-    width: 270px;
+    width: 300px;
 }
 
 .navbar-toggle {
@@ -611,6 +608,9 @@ body {
     aside {
         height: 100%;
         display: block;
+    }
+    #favorites-list-toogle {
+        display: none;
     }
 }
 

@@ -79,14 +79,18 @@
             var favouriteComics = ComicService.getFavouriteComics(),
                 comicsIntersection = [];
 
-            for (var i = 0; i < favouriteComics.length; i++) {
-                for (var j = 0; j < vm.comics.length; j++) {
-                    if (favouriteComics[i].id === vm.comics[j].id) {
-                        comicsIntersection.push(vm.comics[j]);
+            if (favouriteComics) {
+                for (var i = 0; i < favouriteComics.length; i++) {
+                    for (var j = 0; j < vm.comics.length; j++) {
+                        if (favouriteComics[i].id === vm.comics[j].id) {
+                            comicsIntersection.push(vm.comics[j]);
+                        }
                     }
                 }
+                return (vm.comics.length - comicsIntersection.length) >= 3;
+            } else {
+                return false;
             }
-            return (vm.comics.length - comicsIntersection.length) >= 3;
         }
 
         function isContainedInRadomComics(comics, comicId) {
