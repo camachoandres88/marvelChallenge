@@ -13,10 +13,9 @@
         .module('marvelChallengeApp')
         .config(RouterConfig);
 
-    RouterConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+    RouterConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    function RouterConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+    function RouterConfig($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/characters');
-        //$locationProvider.html5Mode(true).hashPrefix('!');
     }
 })();

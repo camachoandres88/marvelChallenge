@@ -19,14 +19,14 @@
         var vm = this;
 
         vm.comic = comic;
-        vm.close = close;
+        vm.close = closeModal;
         vm.getImage = getImage;
 
         vm.added = ComicService.isComicAddedInStore(vm.comic.id);
         vm.addComicToFavourites = addComicToFavourites;
         vm.sanitizeDescription = sanitizeDescription;
 
-        function close() {
+        function closeModal() {
             $uibModalInstance.close();
         }
 

@@ -20,7 +20,7 @@
         vm.comics = comic;
         vm.addComicsToFavourites = addComicsToFavourites;
         vm.getComicImage = getComicImage;
-        vm.close = close;
+        vm.close = closeModal;
 
         function addComicsToFavourites() {
             for (var i = 0; i < vm.comics.length; i++) {
@@ -29,7 +29,7 @@
             vm.close();
         }
 
-        function close() {
+        function closeModal() {
             $uibModalInstance.close();
         }
 
