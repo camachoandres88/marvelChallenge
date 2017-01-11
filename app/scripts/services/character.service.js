@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name marvelChallengeApp.services:CharacterService
+     * @description
+     * # CharacterService
+     * Service to consume the marvel rest api (Characters endpoints) and manage characters data
+     */
+
     angular
         .module('marvelChallengeApp.services')
         .factory('CharacterService', CharacterService);
@@ -9,7 +17,7 @@
 
     function CharacterService(Restangular, API_CONSTANTS, APP_CONSTANTS) {
 
-        let service = {
+        var service = {
             getSingleEntity: getSingleEntity,
             getImage: getImage,
             getEntityByNameAndOffset: getEntityByNameAndOffset
@@ -22,7 +30,7 @@
         }
 
         function getSingleEntity(id) {
-            let params = {
+            var params = {
                 apikey: APP_CONSTANTS.MARVEL_API_KEY
             };
             return getBase().one('', id).customGET('', params);
@@ -38,7 +46,7 @@
         }
 
         function getEntityByNameAndOffset(name, page, sort) {
-            let params = {
+            var params = {
                 limit: APP_CONSTANTS.PAGINATOR.RECORDS_LIMIT,
                 offset: ((page - 1) * APP_CONSTANTS.PAGINATOR.RECORDS_LIMIT),
                 apikey: APP_CONSTANTS.MARVEL_API_KEY,

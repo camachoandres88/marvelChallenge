@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name marvelChallengeApp.services:ComicService
+     * @description
+     * # ComicService
+     * Service to consume the marvel rest api (Comic endpoints) and manage comics data
+     */
+
     angular
         .module('marvelChallengeApp.services')
         .factory('ComicService', ComicService);
@@ -9,7 +17,7 @@
 
     function ComicService(Restangular, API_CONSTANTS, APP_CONSTANTS, store) {
 
-        let favouriteComics = store.get(APP_CONSTANTS.STORE.FAVOURITE_COMICS) || [],
+        var favouriteComics = store.get(APP_CONSTANTS.STORE.FAVOURITE_COMICS) || [],
             service = {
                 getSingleEntity: getSingleEntity,
                 getImage: getImage,
@@ -30,14 +38,14 @@
         }
 
         function getSingleEntity(id) {
-            let params = {
+            var params = {
                 apikey: APP_CONSTANTS.MARVEL_API_KEY
             };
             return getBase().one('', id).customGET('', params);
         }
 
         function getEntitiesByCharacter(characterId) {
-            let params = {
+            var params = {
                 characters: characterId,
                 apikey: APP_CONSTANTS.MARVEL_API_KEY
             };
@@ -45,7 +53,7 @@
         }
 
         function addFavouriteComic(comic) {
-            let lightComicObject = { id: comic.id, title: comic.title, image: comic.thumbnail.path + '/' + APP_CONSTANTS.IMAGE.SIZES.COMIC_INCREDIBLE + '.' + comic.thumbnail.extension };
+            var lightComicObject = { id: comic.id, title: comic.title, image: comic.thumbnail.path + '/' + APP_CONSTANTS.IMAGE.SIZES.COMIC_INCREDIBLE + '.' + comic.thumbnail.extension };
 
             if (!favouriteComics) {
                 favouriteComics = [lightComicObject];
@@ -59,7 +67,7 @@
 
         function isComicAddedInStore(comicId) {
             if (favouriteComics) {
-                for (let i = 0; i < favouriteComics.length; i++) {
+                for (var i = 0; i < favouriteComics.length; i++) {
                     if (favouriteComics[i].id === comicId) {
                         return true;
                     }
@@ -89,10 +97,10 @@
         }
 
         function deleteFromFavouriteComics(comicId) {
-            let objectToDelete = null,
+            var objectToDelete = null,
                 index = null;
 
-            for (let i = 0; i < favouriteComics.length; i++) {
+            for (var i = 0; i < favouriteComics.length; i++) {
                 if (favouriteComics[i].id === comicId) {
                     objectToDelete = favouriteComics[i];
                 }
@@ -106,11 +114,11 @@
         }
 
         function enableRandomFunctionality(comicList) {
-            let comicsIntersection = [];
+            var comicsIntersection = [];
 
             if (favouriteComics) {
-                for (let i = 0; i < favouriteComics.length; i++) {
-                    for (let j = 0; j < comicList.length; j++) {
+                for (var i = 0; i < favouriteComics.length; i++) {
+                    for (var j = 0; j < comicList.length; j++) {
                         if (favouriteComics[i].id === comicList[j].id) {
                             comicsIntersection.push(comicList[j]);
                         }
@@ -123,7 +131,7 @@
         }
 
         function getRandomComics(comicList) {
-            let randomComics = [],
+            var randomComics = [],
                 item;
 
             while (randomComics.length < 3) {
@@ -137,7 +145,7 @@
 
         function isContainedInComicsList(comicList, comicId) {
             if (comicList) {
-                for (let i = 0; i < comicList.length; i++) {
+                for (var i = 0; i < comicList.length; i++) {
                     if (comicList[i].id === comicId) {
                         return true;
                     }

@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc function
+     * @name marvelChallengeApp.modules.comics:ComicDetailController
+     * @description
+     * # ComicDetailController
+     * Controller that supports all the logic to display the comic detail and the add to favourites functionality.
+     */
+
     angular
         .module('marvelChallengeApp.modules.comics')
         .controller('ComicDetailController', ComicDetailController);
@@ -8,7 +16,7 @@
     ComicDetailController.$inject = ['$uibModalInstance', 'comic', 'ComicService', 'APP_CONSTANTS', '$sce'];
 
     function ComicDetailController($uibModalInstance, comic, ComicService, APP_CONSTANTS, $sce) {
-        let vm = this;
+        var vm = this;
 
         vm.comic = comic;
         vm.close = close;

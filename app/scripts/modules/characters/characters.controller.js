@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc function
+     * @name marvelChallengeApp.modules.characters:CharactersController
+     * @description
+     * # CharactersController
+     * Controller that supports all the logic to search characters and display them in groups of 10.
+     */
+
     angular
         .module('marvelChallengeApp.modules.characters')
         .controller('CharactersController', CharactersController);
@@ -8,15 +16,15 @@
     CharactersController.$inject = ['CharacterService', 'APP_CONSTANTS', '$scope', '$state'];
 
     function CharactersController(CharacterService, APP_CONSTANTS, $scope, $state) {
-        let vm = this;
+        var vm = this;
 
         vm.characters = [];
         vm.filterText = '';
         vm.isLoading = false;
         vm.paging = {
-            total: 100,
+            total: 0,
             current: 1,
-            maxPagesSize: 5,
+            maxPagesSize: APP_CONSTANTS.PAGINATOR_SIZE,
             onPageChanged: getCharacters,
             sort: 'name'
         };

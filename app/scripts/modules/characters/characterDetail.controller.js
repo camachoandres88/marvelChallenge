@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc function
+     * @name marvelChallengeApp.modules.characters:CharacterDetailController
+     * @description
+     * # CharacterDetailController
+     * Controller that supports all the logic to show the character detail and comics resume.
+     */
+
     angular
         .module('marvelChallengeApp.modules.characters')
         .controller('CharacterDetailController', CharacterDetailController);
@@ -8,7 +16,7 @@
     CharacterDetailController.$inject = ['CharacterService', 'ComicService', 'APP_CONSTANTS', '$scope', '$stateParams', '$q', '$state', '$uibModal'];
 
     function CharacterDetailController(CharacterService, ComicService, APP_CONSTANTS, $scope, $stateParams, $q, $state, $uibModal) {
-        let vm = this;
+        var vm = this;
 
         vm.activate = activate;
         vm.character = null;
@@ -30,7 +38,7 @@
         }
 
         function getCharacterDetail() {
-            let promises = [];
+            var promises = [];
             vm.isLoading = true;
             promises.push(CharacterService.getSingleEntity(vm.id));
             promises.push(ComicService.getEntitiesByCharacter(vm.id));
@@ -52,7 +60,7 @@
         }
 
         function getRandomComics() {
-            let randomComics = ComicService.getRandomComics(vm.comics);
+            var randomComics = ComicService.getRandomComics(vm.comics);
 
             $uibModal.open({
                 templateUrl: '/views/comics/randomComics.template.html',

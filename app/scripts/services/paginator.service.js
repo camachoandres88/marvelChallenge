@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name marvelChallengeApp.services:PaginatorService
+     * @description
+     * # PaginatorService
+     * Service to manage the states of the paginator
+     */
+
     angular
         .module('marvelChallengeApp.services')
         .factory('PaginatorService', PaginatorService);
@@ -9,7 +17,7 @@
 
     function PaginatorService() {
 
-        let actualPage = 0,
+        var actualPage = 0,
             service = {
                 getActualPage: getActualPage,
                 setActualPage: setActualPage

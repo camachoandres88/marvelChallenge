@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc function
+     * @name marvelChallengeApp.modules.characters:CharactersRouter
+     * @description
+     * # CharactersRouter
+     * Main router for Characters module
+     */
+
     angular
         .module('marvelChallengeApp.modules.characters')
         .config(CharactersRouter);

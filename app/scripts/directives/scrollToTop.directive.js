@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc directive
+     * @name marvelChallengeApp.directives:scrollToTop
+     * @description
+     * # scrollToTop
+     * Directive to scroll to top on click over root element
+     */
+
     angular
         .module('marvelChallengeApp.directives')
         .directive('scrollToTop', scrollToTop);

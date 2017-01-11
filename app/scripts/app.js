@@ -9,6 +9,7 @@
      *
      * Main module of the application.
      */
+
     angular
         .module('marvelChallengeApp', [
             'ui.router',

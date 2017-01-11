@@ -1,6 +1,14 @@
 (function() {
     'use strict';
 
+    /**
+     * @ngdoc service
+     * @name marvelChallengeApp:APP_CONSTANTS
+     * @description
+     * # APP_CONSTANTS
+     * Constants used in the app
+     */
+
     angular
         .module('marvelChallengeApp')
         .constant('APP_CONSTANTS', {
@@ -8,7 +16,8 @@
             MARVEL_API_KEY: '010d48bc826621bc851993925f9d6877',
             PAGINATOR: {
                 STEPS: 6,
-                RECORDS_LIMIT: 10
+                RECORDS_LIMIT: 10,
+                PAGINATOR_SIZE: 5
             },
             IMAGE: {
                 SIZES: {

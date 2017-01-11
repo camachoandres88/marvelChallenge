@@ -1,14 +1,22 @@
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  angular
-    .module('marvelChallengeApp')
-    .config(routerConfig);
+    /**
+     * @ngdoc function
+     * @name marvelChallengeApp:RouterConfig
+     * @description
+     * # RouterConfig
+     * Main router for marvelChallengeApp
+     */
 
-  routerConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+    angular
+        .module('marvelChallengeApp')
+        .config(RouterConfig);
 
-  function routerConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/characters');
-    //$locationProvider.html5Mode(true).hashPrefix('!');
-  }
+    RouterConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+
+    function RouterConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+        $urlRouterProvider.otherwise('/characters');
+        //$locationProvider.html5Mode(true).hashPrefix('!');
+    }
 })();
