@@ -24,7 +24,7 @@
         vm.paging = {
             total: 0,
             current: 1,
-            maxPagesSize: APP_CONSTANTS.PAGINATOR_SIZE,
+            maxPagesSize: APP_CONSTANTS.PAGINATOR.PAGINATOR_SIZE,
             onPageChanged: getCharacters,
             sort: 'name'
         };
